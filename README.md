@@ -90,6 +90,29 @@ python -m unittest discover -s tests
 覆盖：模式切换边界（09:00/12:00/14:00/18:00）、提醒窗口（08:50-09:00、13:50-14:00）、
 未提供时间默认梁文峰、UTC→北京时间换算、详细回答豁免。
 
+## DeepSeek Harness 插件（dsh-plugin/）
+
+`dsh-plugin/` 是 DeepSeek Harness（`npx @deepseek-ai/dsh web`）的原生插件，
+安装到 `~/.dsh/profiles/node_modules/liang-mode-dsh/` 后生效（server + client 双侧）。
+
+功能：
+
+- **自动模式**：默认按北京时间自动切换梁文峰（极简）/ 梁文谷（正常），规则注入系统提示词。
+- **手动锁定**：对话输入区提示框右侧按钮循环切换「自动（按时间）→ 手动梁文峰 → 手动梁文谷」，
+  选择持久化到 `~/.dsh/liang-mode.json`，重启后保留。
+- **模式提示框**：显示当前模式头像（`lib/assets/feng.jpg` / `gu.jpg`）、模式名与北京时间，每 30 秒刷新。
+- **对话开始模式记忆**：提示框显示「开始：模式 时间」（本对话开始那一刻的模式，
+  存于 sessionStorage，刷新不丢）；同时服务端追加写入 `~/.dsh/liang-mode-sessions.jsonl` 长期留存。
+
+HTTP 接口（插件经 `webServer` 服务注册）：
+
+| 接口 | 说明 |
+|---|---|
+| `GET /liang-mode/state` | 当前状态 `{ override, mode, remind, time, label, rules }` |
+| `POST /liang-mode/override` | 切换模式，body `{ "override": "auto"\|"feng"\|"gu" }` |
+| `POST /liang-mode/conversation-start` | 对话开始打点，body `{ "key": "<pathname>" }`，写 jsonl 记录 |
+| `GET /liang-mode/avatar-feng.jpg` / `avatar-gu.jpg` | 模式配图 |
+
 ## License
 
 MIT
