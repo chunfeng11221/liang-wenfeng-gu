@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "liang-mode"
+version = "0.1.0"
+description = "DeepSeek 梁文峰/梁文谷 双模式 harness 适配器：按北京时间自动切换极简/正常回复，带模式提示框"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["requests>=2.28"]
+
+[project.scripts]
+liang-mode = "liang_mode.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["liang_mode*"]
