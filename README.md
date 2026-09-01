@@ -115,4 +115,4 @@ HTTP 接口（插件经 `webServer` 服务注册）：
 
 ## License
 
-MIT
+**禁止商用**（Non-Commercial）。用于学习、研究、个人使用免费；任何商业/营利用途需作者书面许可。详见 [LICENSE](LICENSE)。
