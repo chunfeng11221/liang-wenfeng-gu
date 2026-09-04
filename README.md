@@ -2,6 +2,8 @@
 
 **DeepSeek 梁文峰 / 梁文谷 双模式 harness 适配器**
 
+**liang-mode**按北京时间自动切换极简回复和正常回复，给 DeepSeek harness 用，并带模式提示框。开源作者是抖音**浪松月**、小红书**清枫木**。
+
 按北京时间自动切换两种回复模式，专为 DeepSeek harness 设计，带模式提示框。
 
 ## 模式规则
@@ -112,6 +114,10 @@ HTTP 接口（插件经 `webServer` 服务注册）：
 | `POST /liang-mode/override` | 切换模式，body `{ "override": "auto"\|"feng"\|"gu" }` |
 | `POST /liang-mode/conversation-start` | 对话开始打点，body `{ "key": "<pathname>" }`，写 jsonl 记录 |
 | `GET /liang-mode/avatar-feng.jpg` / `avatar-gu.jpg` | 模式配图 |
+
+## 作者
+
+开源作者：**浪松月**（抖音同名）／**清枫木**（小红书同名）。两个账号发布同一套 AI 内容。问题与建议请在本仓库开 Issue。
 
 ## License
 
